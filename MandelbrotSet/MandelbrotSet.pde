@@ -20,19 +20,19 @@ void setup () {
   
   
   
-  sh.set("color1", 0.0, 4.0, 13.0);
-  sh.set("color2", 0.0, 49.0, 83.0);
-  sh.set("color3", 80.0, 125.0, 42.0);
-  sh.set("color4", 0.0, 15.0, 137.0);
-  sh.set("color5", 18.0, 53.0, 36.0);
-  sh.set("color6", 102.0, 66.0, 40.0);
-  sh.set("color7", 227.0, 38.0, 54.0);
-  sh.set("color8", 60.0, 20.0, 20.0);
-  sh.set("color9", 203.0, 157.0, 6.0);
-  sh.set("color10", 225.0, 6.0, 0.0);
-  sh.set("color11", 255.0, 246.0, 0.0);
-  sh.set("color12", 227.0, 168.0, 87.0);
-  sh.set("color13", 243.0, 244.0, 247.0);
+  sh.set("color1", 0.0, 0.0, 0.0);           // midnight black
+  sh.set("color2", 2.0, 30.0, 68.0);         // prussian blue
+  sh.set("color3", 10.0, 52.0, 16.0);        // sap green
+  sh.set("color4", 12.0, 0.0, 64.0);         // phthalo blue
+  sh.set("color5", 16.0, 46.0, 60.0);        // phthalo green
+  sh.set("color6", 34.0, 27.0, 21.0);        // van dyke brown
+  sh.set("color7", 78.0, 21.0, 0.0);         // alizarin crimson
+  sh.set("color8", 95.0, 46.0, 31.0);        // dark sienna
+  sh.set("color9", 199.0, 155.0, 0.0);       // yellow ochre
+  sh.set("color10", 219.0, 0.0, 0.0);        // bright red
+  sh.set("color11", 255.0, 236.0, 0.0);      // cadmium yellow
+  sh.set("color12", 255.0, 184.0, 0.0);     // indian yellow
+  sh.set("color13", 255.0, 255.0, 255.0);    // titanium white
   
   
   
