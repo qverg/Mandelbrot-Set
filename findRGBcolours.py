@@ -13,24 +13,10 @@ for item in y:
     x.append(matchnumbers[1]+".0,"+matchnumbers[3]+".0,"+matchnumbers[5]+".0")
 
 
-print("\n =====> The following goes inside setup() in MandelbrotSet.pde")
+command = "vec3 color[] = vec3[]("
+for col in x:
+    command += "\n\tvec3("+str(col)+"),"
 
-for i in range(0, len(x)-1):
-    print("sh.set(\"color"+str((i+1))+"\","+x[i]+");")
-
-print("\n =====> The following goes under the global variables, OUTSIDE of main() in mandelbrotFrag.glsl")
-
-for i in range(0, len(x)-1):
-    print("uniform vec3 color"+str((i+1))+";")
-
-
-insideFragFunctionCommand = "vec3 colors[] = {"
-
-for i in range(0, len(x)-1):
-    insideFragFunctionCommand += "color"+str((i+1))+"/256,"
-
-print("\n =====> The following goes inside main() in mandelbrotFrag.glsl")
-print(insideFragFunctionCommand[:-1]+"};")
-
+print(command[:-1]+");")
 
 input()
