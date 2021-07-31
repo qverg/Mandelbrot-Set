@@ -10,12 +10,13 @@ x = []
 
 for item in y:
     matchnumbers = re.findall("\d*", item)
-    x.append(matchnumbers[1]+".0,"+matchnumbers[3]+".0,"+matchnumbers[5]+".0")
+    fl_numbers = [str( float(number) / 256.0) for number in matchnumbers if number != '']
+    x.append(fl_numbers[0]+","+fl_numbers[1]+","+fl_numbers[2])
 
 
-command = "vec3 color[] = vec3[]("
+command = "vec3 colors[] = vec3[]("
 for col in x:
-    command += "\n\tvec3("+str(col)+"),"
+    command += "vec3("+str(col)+"),"
 
 print(command[:-1]+");")
 

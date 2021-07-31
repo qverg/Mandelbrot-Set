@@ -1,4 +1,4 @@
-num = 30
+num = 100
 hues = [i * 360 / num for i in range(num)]
 
 diff = (360 - hues[num-1]) / 2
@@ -27,6 +27,6 @@ for i in range(num):
 
 command = "vec3 color[] = vec3[]("
 for col in rgb:
-    command += "\n\tvec3"+str(col)+","
+    command += "vec3"+str(col)+","
 
 print(command[:-1]+");")
