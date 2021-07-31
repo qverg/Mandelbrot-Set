@@ -5,13 +5,15 @@ float sc;
 PVector trans;
 float speed;
 
-float nmx, nmy;
+float magnification;
 
-ArrayList<Integer> keysDown;
+void settings () {
+  size(1050, 600, P2D);
+}
 
 void setup () {
+  magnification = width/3.5;
   
-  size(1050, 600, P2D);
   noStroke();
   
   sh = loadShader("optimisedMandelbrotFrag.glsl");
@@ -20,26 +22,13 @@ void setup () {
   trans = new PVector(0.0, 0.0);
   speed = 25.0;
   
-  keysDown = new ArrayList<Integer>();
+  sh.set("magnification", magnification);
   
   // https://www.rapidtables.com/web/color/html-color-codes.html
     
 }
 
 void draw () {
-  for (int c : keysDown) {
-    
-    if (c == UP) {
-      trans.y += speed / zoom;
-    } else if (c == DOWN) {
-      trans.y -= speed / zoom;
-    } else if (c == LEFT) {
-      trans.x -= speed / zoom;
-    } else if (c == RIGHT) {
-      trans.x += speed / zoom;
-    }
-    
-  }
   
   if (mousePressed) {
     cursor(MOVE);
@@ -47,6 +36,17 @@ void draw () {
     trans.x -= (mouseX - pmouseX) / zoom;
   } else {
     cursor(ARROW);
+  }
+  
+  if (keyPressed) {
+    
+    switch (key) {
+      
+      case 'i' : zoomIn(); break;
+      case 'o' : zoomOut(); break;
+      
+    }
+    
   }
   
   sh.set("zoom", zoom);
@@ -59,27 +59,32 @@ void draw () {
 
 
 void keyPressed () {
-  
-  if (!keysDown.contains(keyCode)) {
-    keysDown.add(keyCode);
+  if (key == ' ') {
+    zoom = 1.0;
+    trans = new PVector();
   }
-  
 }
 
-void keyReleased () {
-  
-  if (keysDown.contains(keyCode)) {
-    keysDown.remove(keysDown.indexOf(keyCode));
-  }
-  
-}
+
 
 void mouseWheel (MouseEvent e) {
   
-  if (e.getCount() < 0 && zoom < 60000) {
-    zoom *= 1.05;
+  if (e.getCount() < 0) {
+    zoomIn();
   } else if (e.getCount() > 0 && zoom > 0.1) {
-    zoom /= 1.05;
+    zoomOut();
   }
+  
+}
+
+void zoomIn () {
+  
+  zoom *= 1.05;
+  
+}
+
+void zoomOut () {
+  
+  zoom /= 1.05;
   
 }
