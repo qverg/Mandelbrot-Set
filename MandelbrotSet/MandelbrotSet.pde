@@ -7,8 +7,10 @@ float speed;
 
 float magnification;
 
+boolean showJulia;
+
 void settings () {
-  size(1050, 600, P2D);
+  size(1050, 600, P2D); // maintain 7:4 ratio
 }
 
 void setup () {
@@ -16,16 +18,16 @@ void setup () {
   
   noStroke();
   
-  sh = loadShader("optimisedMandelbrotFrag.glsl");
+  sh = loadShader("MandelbrotWithJuliaFrag.glsl");
   zoom = 1.0;
   sc = 1;
   trans = new PVector(0.0, 0.0);
   speed = 25.0;
   
-  sh.set("magnification", magnification);
+  showJulia = false;
   
-  // https://www.rapidtables.com/web/color/html-color-codes.html
-    
+  sh.set("magnification", magnification);
+  sh.set("windowSize", float(width), float(height));
 }
 
 void draw () {
@@ -49,6 +51,7 @@ void draw () {
     
   }
   
+  sh.set("showJulia", showJulia);
   sh.set("zoom", zoom);
   sh.set("trans", trans.x, trans.y);
   
@@ -62,6 +65,8 @@ void keyPressed () {
   if (key == ' ') {
     zoom = 1.0;
     trans = new PVector();
+  } else if (key == 'j') {
+    showJulia = !showJulia;    
   }
 }
 
