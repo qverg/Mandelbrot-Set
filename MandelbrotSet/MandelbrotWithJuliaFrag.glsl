@@ -55,7 +55,7 @@ vec3 getColor(int iteration, int max_iteration, float x, float y) {
 void main () {
 
   vec2 crosshairPos = vec2(magnification * 2.5 + 0.5, magnification + 0.5);
-  if ((gl_FragCoord.x-crosshairPos.x)*(gl_FragCoord.x-crosshairPos.x) + (gl_FragCoord.y-crosshairPos.y)*(gl_FragCoord.y-crosshairPos.y) < 100) && (gl_FragCoord.x == crosshairPos.x || gl_FragCoord.y == crosshairPos.y)) {
+  if ((gl_FragCoord.x-crosshairPos.x)*(gl_FragCoord.x-crosshairPos.x) + (gl_FragCoord.y-crosshairPos.y)*(gl_FragCoord.y-crosshairPos.y) < 100 && (gl_FragCoord.x == crosshairPos.x || gl_FragCoord.y == crosshairPos.y)) {
     
     gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     
